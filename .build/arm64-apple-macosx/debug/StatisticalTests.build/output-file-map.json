@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/master.swiftdeps"
+  },
+  "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Tests/StatisticalTests/StatisticalTests.swift": {
+    "dependencies": "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests.d",
+    "object": "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests.swift.o",
+    "swiftmodule": "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests.swiftdeps",
+    "diagnostics": "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests.dia"
+  }
+}
