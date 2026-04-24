@@ -9,7 +9,7 @@ public struct HyStatisticalConfig {
 
     public init(
         apiKey: String,
-        serverUrl: String = "http://192.168.9.53:3000/api/v1",
+        serverUrl: String = "http://192.168.9.85:3000/api/v1",
         flushInterval: TimeInterval = 10,
         flushSize: Int = 50,
         maxRetries: Int = 3
