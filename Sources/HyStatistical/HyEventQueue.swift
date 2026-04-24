@@ -46,19 +46,32 @@ final class HyEventQueue {
 
         log("flush → POST \(serverUrl)/collect batch=\(batch.count)")
 
-        send(batch: batch, attempt: 0) { [weak self] success in
+        send(batch: batch, attempt: 0) { [weak self] outcome in
             guard let self else { return }
             self.lock.lock()
-            if success {
-                self.queue.removeFirst(batchCount)
-                self.clearOfflineCache()
-            } else {
+            switch outcome {
+            case .success, .clientError:
+                // 成功 或 客户端错误（4xx）：都从队列里移除这批
+                // 期间若 clearPending 清空了队列，避免 removeFirst 越界
+                let removeCount = min(batchCount, self.queue.count)
+                if removeCount > 0 { self.queue.removeFirst(removeCount) }
+                if self.queue.isEmpty { self.clearOfflineCache() }
+            case .retryable:
                 self.log("flush GIVE UP, saving \(self.queue.count) events offline")
                 self.saveOfflineEvents()
             }
             self.isFlushing = false
             self.lock.unlock()
         }
+    }
+
+    func clearPending() {
+        lock.lock()
+        let n = queue.count
+        queue.removeAll()
+        lock.unlock()
+        UserDefaults.standard.removeObject(forKey: Self.offlineKey)
+        log("cleared \(n) pending events and offline cache")
     }
 
     func stop() {
@@ -73,10 +86,16 @@ final class HyEventQueue {
         return queue.count
     }
 
-    private func send(batch: [[String: Any]], attempt: Int, completion: @escaping (Bool) -> Void) {
+    enum FlushOutcome {
+        case success
+        case clientError  // 4xx，重试无用，丢弃该批
+        case retryable    // 5xx / 网络错误 / 编码错误，需要重试 + 离线保存
+    }
+
+    private func send(batch: [[String: Any]], attempt: Int, completion: @escaping (FlushOutcome) -> Void) {
         guard let url = URL(string: "\(serverUrl)/collect") else {
-            log("flush FAIL invalid URL: \(serverUrl)/collect")
-            completion(false); return
+            log("flush DROP invalid URL: \(serverUrl)/collect")
+            completion(.clientError); return
         }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -84,29 +103,33 @@ final class HyEventQueue {
         request.setValue(apiKey, forHTTPHeaderField: "X-Api-Key")
         do { request.httpBody = try JSONSerialization.data(withJSONObject: ["events": batch]) }
         catch {
-            log("flush FAIL JSON encode error: \(error)")
-            completion(false); return
+            log("flush DROP JSON encode error: \(error)")
+            completion(.clientError); return
         }
 
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             guard let self else { return }
             let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            let body = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
             if error == nil, statusCode == 200 {
-                let body = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
                 self.log("flush OK \(body)")
-                completion(true)
-            } else {
-                let body = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
-                let errDesc = error.map { "\($0)" } ?? "nil"
-                self.log("flush FAIL attempt=\(attempt + 1)/\(self.maxRetries) status=\(statusCode) error=\(errDesc) body=\(body)")
-                if attempt < self.maxRetries - 1 {
-                    let delay = pow(2.0, Double(attempt))
-                    DispatchQueue.global().asyncAfter(deadline: .now() + delay) {
-                        self.send(batch: batch, attempt: attempt + 1, completion: completion)
-                    }
-                } else {
-                    completion(false)
+                completion(.success)
+                return
+            }
+            if statusCode >= 400 && statusCode < 500 {
+                self.log("flush DROP status=\(statusCode) (client error, discarding \(batch.count) events) body=\(body)")
+                completion(.clientError)
+                return
+            }
+            let errDesc = error.map { "\($0)" } ?? "nil"
+            self.log("flush FAIL attempt=\(attempt + 1)/\(self.maxRetries) status=\(statusCode) error=\(errDesc) body=\(body)")
+            if attempt < self.maxRetries - 1 {
+                let delay = pow(2.0, Double(attempt))
+                DispatchQueue.global().asyncAfter(deadline: .now() + delay) {
+                    self.send(batch: batch, attempt: attempt + 1, completion: completion)
                 }
+            } else {
+                completion(.retryable)
             }
         }.resume()
     }

@@ -24,8 +24,8 @@ public final class HyStatistical {
 
     private init() {}
 
-    public static func initialize(config: HyStatisticalConfig, appVersion: String = "") {
-        shared.setup(config: config, appVersion: appVersion)
+    public static func initialize(config: HyStatisticalConfig, appVersion: String = "", userId: String? = nil) {
+        shared.setup(config: config, appVersion: appVersion, userId: userId)
     }
 
     public static func track(_ eventName: String, _ properties: [String: Any]? = nil) {
@@ -45,14 +45,21 @@ public final class HyStatistical {
         shared.queue?.flush()
     }
 
+    /// 清空内存队列和离线缓存里所有待发事件。
+    public static func clearPending() {
+        shared.queue?.clearPending()
+    }
+
     public static var deviceId: String { shared.deviceId }
     public static var pendingCount: Int { shared.queue?.pendingCount ?? 0 }
 
-    private func setup(config: HyStatisticalConfig, appVersion: String) {
+    private func setup(config: HyStatisticalConfig, appVersion: String, userId: String?) {
         guard !isInitialized else { return }
         self.config = config
         self.appVersion = appVersion
         self.enableLog = config.enableLog
+        // 在 lifecycle 首条 app_open 触发之前设好 userId，保证它也带 user_id
+        if let userId, !userId.isEmpty { self.userId = userId }
 
         if let stored = HyKeychainHelper.read(key: Self.deviceIdKey) {
             deviceId = stored
@@ -81,7 +88,7 @@ public final class HyStatistical {
                   + "deviceId=\(deviceId) appVersion=\(appVersion) "
                   + "osVersion=\(UIDevice.current.systemVersion) "
                   + "flushInterval=\(config.flushInterval)s flushSize=\(config.flushSize) "
-                  + "maxRetries=\(config.maxRetries)")
+                  + "maxRetries=\(config.maxRetries) userId=\(userId ?? "(nil)")")
         }
 
         log("lifecycle app_open")
@@ -116,7 +123,8 @@ public final class HyStatistical {
             "device_id": deviceId,
             "session_id": "s_\(sessionId)",
             "insert_id": UUID().uuidString.lowercased(),
-            "app_version": appVersion,
+            // 业务方若未传 appVersion 兜底为 "unknown"，避免被后端拒绝
+            "app_version": appVersion.isEmpty ? "unknown" : appVersion,
             "os_version": UIDevice.current.systemVersion,
         ]
         if let userId, !userId.isEmpty { event["user_id"] = userId }
