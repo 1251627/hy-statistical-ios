@@ -9,6 +9,7 @@ final class HyStatisticalTests: XCTestCase {
         XCTAssertEqual(config.flushInterval, 10)
         XCTAssertEqual(config.flushSize, 50)
         XCTAssertEqual(config.maxRetries, 3)
+        XCTAssertFalse(config.enableLog)
     }
 
     func testConfigCustomValues() {

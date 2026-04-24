@@ -1,9 +1,9 @@
 {
   "builtTestProducts" : [
     {
-      "binaryPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.xctest/Contents/MacOS/StatisticalPackageTests",
-      "packagePath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios",
-      "productName" : "StatisticalPackageTests"
+      "binaryPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.xctest/Contents/MacOS/HyStatisticalPackageTests",
+      "packagePath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios",
+      "productName" : "HyStatisticalPackageTests"
     }
   ],
   "copyCommands" : {
@@ -21,44 +21,44 @@
 
   ],
   "swiftCommands" : {
-    "C.Statistical-arm64-apple-macosx26.0-debug.module" : {
+    "C.HyStatistical-arm64-apple-macosx26.0-debug.module" : {
       "executable" : "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
-      "fileList" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/sources",
-      "importPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules",
+      "fileList" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/sources",
+      "importPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules",
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/EventQueue.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyEventQueue.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/KeychainHelper.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyKeychainHelper.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/Statistical.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatistical.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/StatisticalConfig.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatisticalConfig.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/sources"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/sources"
         }
       ],
       "isLibrary" : true,
-      "moduleName" : "Statistical",
-      "moduleOutputPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/Statistical.swiftmodule",
+      "moduleName" : "HyStatistical",
+      "moduleOutputPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatistical.swiftmodule",
       "objects" : [
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/EventQueue.swift.o",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/KeychainHelper.swift.o",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/Statistical.swift.o",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/StatisticalConfig.swift.o"
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue.swift.o",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper.swift.o",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical.swift.o",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -67,7 +67,7 @@
         "-enable-batch-mode",
         "-serialize-diagnostics",
         "-index-store-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/index/store",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/index/store",
         "-Onone",
         "-enable-testing",
         "-j10",
@@ -75,12 +75,12 @@
         "-DDEBUG",
         "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
         "-module-cache-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/ModuleCache",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
         "-parse-as-library",
         "-emit-objc-header",
         "-emit-objc-header-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/include/Statistical-Swift.h",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/include/HyStatistical-Swift.h",
         "-swift-version",
         "5",
         "-plugin-path",
@@ -113,68 +113,68 @@
         "-Xcc",
         "-g",
         "-package-name",
-        "statistical_ios"
+        "sdk_ios"
       ],
-      "outputFileMapPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/output-file-map.json",
+      "outputFileMapPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/output-file-map.json",
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/EventQueue.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/KeychainHelper.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/Statistical.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/StatisticalConfig.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/Statistical.swiftmodule"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatistical.swiftmodule"
         }
       ],
       "prepareForIndexing" : false,
       "sources" : [
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/EventQueue.swift",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/KeychainHelper.swift",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/Statistical.swift",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/StatisticalConfig.swift"
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyEventQueue.swift",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyKeychainHelper.swift",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatistical.swift",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatisticalConfig.swift"
       ],
-      "tempsPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build",
+      "tempsPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build",
       "wholeModuleOptimization" : false
     },
-    "C.StatisticalPackageTests-arm64-apple-macosx26.0-debug.module" : {
+    "C.HyStatisticalPackageTests-arm64-apple-macosx26.0-debug.module" : {
       "executable" : "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
-      "fileList" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/sources",
-      "importPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules",
+      "fileList" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/sources",
+      "importPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules",
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.derived/runner.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.derived/runner.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/StatisticalTests.swiftmodule"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatisticalTests.swiftmodule"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/sources"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/sources"
         }
       ],
       "isLibrary" : true,
-      "moduleName" : "StatisticalPackageTests",
-      "moduleOutputPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/StatisticalPackageTests.swiftmodule",
+      "moduleName" : "HyStatisticalPackageTests",
+      "moduleOutputPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatisticalPackageTests.swiftmodule",
       "objects" : [
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/runner.swift.o"
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/runner.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -183,7 +183,7 @@
         "-enable-batch-mode",
         "-serialize-diagnostics",
         "-index-store-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/index/store",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/index/store",
         "-Onone",
         "-enable-testing",
         "-Xfrontend",
@@ -193,12 +193,12 @@
         "-DDEBUG",
         "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
         "-module-cache-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/ModuleCache",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
         "-parse-as-library",
         "-emit-objc-header",
         "-emit-objc-header-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/include/StatisticalPackageTests-Swift.h",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/include/HyStatisticalPackageTests-Swift.h",
         "-plugin-path",
         "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
         "-sdk",
@@ -229,53 +229,53 @@
         "-Xcc",
         "-g",
         "-package-name",
-        "statistical_ios"
+        "sdk_ios"
       ],
-      "outputFileMapPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/output-file-map.json",
+      "outputFileMapPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/output-file-map.json",
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/runner.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/runner.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/StatisticalPackageTests.swiftmodule"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatisticalPackageTests.swiftmodule"
         }
       ],
       "prepareForIndexing" : false,
       "sources" : [
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.derived/runner.swift"
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.derived/runner.swift"
       ],
-      "tempsPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build",
+      "tempsPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build",
       "wholeModuleOptimization" : false
     },
-    "C.StatisticalTests-arm64-apple-macosx26.0-debug.module" : {
+    "C.HyStatisticalTests-arm64-apple-macosx26.0-debug.module" : {
       "executable" : "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
-      "fileList" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/sources",
-      "importPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules",
+      "fileList" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/sources",
+      "importPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules",
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Tests/StatisticalTests/StatisticalTests.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Tests/HyStatisticalTests/HyStatisticalTests.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/Statistical.swiftmodule"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatistical.swiftmodule"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/sources"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/sources"
         }
       ],
       "isLibrary" : true,
-      "moduleName" : "StatisticalTests",
-      "moduleOutputPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/StatisticalTests.swiftmodule",
+      "moduleName" : "HyStatisticalTests",
+      "moduleOutputPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatisticalTests.swiftmodule",
       "objects" : [
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests.swift.o"
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/HyStatisticalTests.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -284,7 +284,7 @@
         "-enable-batch-mode",
         "-serialize-diagnostics",
         "-index-store-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/index/store",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/index/store",
         "-Onone",
         "-enable-testing",
         "-Xfrontend",
@@ -294,7 +294,7 @@
         "-DDEBUG",
         "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
         "-module-cache-path",
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/ModuleCache",
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
         "-parse-as-library",
         "-swift-version",
@@ -329,24 +329,24 @@
         "-Xcc",
         "-g",
         "-package-name",
-        "statistical_ios"
+        "sdk_ios"
       ],
-      "outputFileMapPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/output-file-map.json",
+      "outputFileMapPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/output-file-map.json",
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/HyStatisticalTests.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules/StatisticalTests.swiftmodule"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules/HyStatisticalTests.swiftmodule"
         }
       ],
       "prepareForIndexing" : false,
       "sources" : [
-        "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Tests/StatisticalTests/StatisticalTests.swift"
+        "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Tests/HyStatisticalTests/HyStatisticalTests.swift"
       ],
-      "tempsPath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build",
+      "tempsPath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build",
       "wholeModuleOptimization" : false
     }
   },
@@ -354,26 +354,26 @@
 
   },
   "swiftTargetScanArgs" : {
-    "Statistical" : [
+    "HyStatistical" : [
       "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
       "-module-name",
-      "Statistical",
+      "HyStatistical",
       "-package-name",
-      "statistical_ios",
+      "sdk_ios",
       "-c",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/EventQueue.swift",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/KeychainHelper.swift",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/Statistical.swift",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/StatisticalConfig.swift",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyEventQueue.swift",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyKeychainHelper.swift",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatistical.swift",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatisticalConfig.swift",
       "-I",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx10.13",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
       "-index-store-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/index/store",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/index/store",
       "-Onone",
       "-enable-testing",
       "-j10",
@@ -381,12 +381,12 @@
       "-DDEBUG",
       "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
       "-module-cache-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/ModuleCache",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
       "-parse-as-library",
       "-emit-objc-header",
       "-emit-objc-header-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/include/Statistical-Swift.h",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/include/HyStatistical-Swift.h",
       "-swift-version",
       "5",
       "-plugin-path",
@@ -419,27 +419,27 @@
       "-Xcc",
       "-g",
       "-package-name",
-      "statistical_ios",
+      "sdk_ios",
       "-driver-use-frontend-path",
       "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
     ],
-    "StatisticalPackageTests" : [
+    "HyStatisticalPackageTests" : [
       "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
       "-module-name",
-      "StatisticalPackageTests",
+      "HyStatisticalPackageTests",
       "-package-name",
-      "statistical_ios",
+      "sdk_ios",
       "-c",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.derived/runner.swift",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.derived/runner.swift",
       "-I",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx10.13",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
       "-index-store-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/index/store",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/index/store",
       "-Onone",
       "-enable-testing",
       "-Xfrontend",
@@ -449,12 +449,12 @@
       "-DDEBUG",
       "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
       "-module-cache-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/ModuleCache",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
       "-parse-as-library",
       "-emit-objc-header",
       "-emit-objc-header-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/include/StatisticalPackageTests-Swift.h",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/include/HyStatisticalPackageTests-Swift.h",
       "-plugin-path",
       "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
       "-sdk",
@@ -485,27 +485,27 @@
       "-Xcc",
       "-g",
       "-package-name",
-      "statistical_ios",
+      "sdk_ios",
       "-driver-use-frontend-path",
       "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
     ],
-    "StatisticalTests" : [
+    "HyStatisticalTests" : [
       "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
       "-module-name",
-      "StatisticalTests",
+      "HyStatisticalTests",
       "-package-name",
-      "statistical_ios",
+      "sdk_ios",
       "-c",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Tests/StatisticalTests/StatisticalTests.swift",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Tests/HyStatisticalTests/HyStatisticalTests.swift",
       "-I",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Modules",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx14.0",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
       "-index-store-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/index/store",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/index/store",
       "-Onone",
       "-enable-testing",
       "-Xfrontend",
@@ -515,7 +515,7 @@
       "-DDEBUG",
       "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
       "-module-cache-path",
-      "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/ModuleCache",
+      "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
       "-parse-as-library",
       "-swift-version",
@@ -550,35 +550,35 @@
       "-Xcc",
       "-g",
       "-package-name",
-      "statistical_ios",
+      "sdk_ios",
       "-driver-use-frontend-path",
       "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
     ]
   },
   "targetDependencyMap" : {
-    "Statistical" : [
+    "HyStatistical" : [
 
     ],
-    "StatisticalPackageTests" : [
-      "StatisticalTests",
-      "Statistical"
+    "HyStatisticalPackageTests" : [
+      "HyStatisticalTests",
+      "HyStatistical"
     ],
-    "StatisticalTests" : [
-      "Statistical"
+    "HyStatisticalTests" : [
+      "HyStatistical"
     ]
   },
   "testDiscoveryCommands" : {
 
   },
   "testEntryPointCommands" : {
-    "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.derived/runner.swift" : {
+    "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.derived/runner.swift" : {
       "inputs" : [
 
       ],
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.derived/runner.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.derived/runner.swift"
         }
       ]
     }
@@ -589,7 +589,7 @@
     }
   },
   "writeCommands" : {
-    "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/sources" : {
+    "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/sources" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -598,24 +598,24 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/EventQueue.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyEventQueue.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/KeychainHelper.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyKeychainHelper.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/Statistical.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatistical.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Sources/Statistical/StatisticalConfig.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatisticalConfig.swift"
         }
       ],
-      "outputFilePath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/sources"
+      "outputFilePath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/sources"
     },
-    "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/sources" : {
+    "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/sources" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -624,12 +624,12 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.derived/runner.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.derived/runner.swift"
         }
       ],
-      "outputFilePath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/sources"
+      "outputFilePath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/sources"
     },
-    "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.product/Objects.LinkFileList" : {
+    "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.product/Objects.LinkFileList" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -638,32 +638,32 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/EventQueue.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/KeychainHelper.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/Statistical.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/Statistical.build/StatisticalConfig.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.build/runner.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.build/runner.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/StatisticalTests.swift.o"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/HyStatisticalTests.swift.o"
         }
       ],
-      "outputFilePath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalPackageTests.product/Objects.LinkFileList"
+      "outputFilePath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalPackageTests.product/Objects.LinkFileList"
     },
-    "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/sources" : {
+    "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/sources" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -672,12 +672,12 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/Tests/StatisticalTests/StatisticalTests.swift"
+          "name" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Tests/HyStatisticalTests/HyStatisticalTests.swift"
         }
       ],
-      "outputFilePath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/StatisticalTests.build/sources"
+      "outputFilePath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatisticalTests.build/sources"
     },
-    "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt" : {
+    "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt" : {
       "alwaysOutOfDate" : true,
       "inputs" : [
         {
@@ -689,7 +689,7 @@
           "name" : "/Users/hy_mac/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
         }
       ],
-      "outputFilePath" : "/Users/hy_mac/Desktop/statistical/packages/statistical_ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
+      "outputFilePath" : "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/swift-version--5A21B4563F4B0A2B.txt"
     }
   }
 }

@@ -18,6 +18,7 @@ public final class HyStatistical {
     private var sessionId: String = ""
     private var appVersion: String = ""
     private var isInitialized = false
+    private var enableLog = false
 
     private static let deviceIdKey = "com.hy.statistical.device_id"
 
@@ -33,6 +34,7 @@ public final class HyStatistical {
 
     public static func setUserId(_ userId: String?) {
         shared.userId = userId
+        shared.log("setUserId \(userId ?? "(nil)")")
     }
 
     public static func setAppVersion(_ version: String) {
@@ -50,6 +52,7 @@ public final class HyStatistical {
         guard !isInitialized else { return }
         self.config = config
         self.appVersion = appVersion
+        self.enableLog = config.enableLog
 
         if let stored = HyKeychainHelper.read(key: Self.deviceIdKey) {
             deviceId = stored
@@ -65,11 +68,23 @@ public final class HyStatistical {
             apiKey: config.apiKey,
             flushSize: config.flushSize,
             flushInterval: config.flushInterval,
-            maxRetries: config.maxRetries
+            maxRetries: config.maxRetries,
+            enableLog: config.enableLog
         )
 
         setupLifecycleObservers()
         isInitialized = true
+
+        if enableLog {
+            let masked = config.apiKey.count > 8 ? "\(config.apiKey.prefix(8))***" : "***"
+            print("[HyStatistical] init serverUrl=\(config.serverUrl) apiKey=\(masked) "
+                  + "deviceId=\(deviceId) appVersion=\(appVersion) "
+                  + "osVersion=\(UIDevice.current.systemVersion) "
+                  + "flushInterval=\(config.flushInterval)s flushSize=\(config.flushSize) "
+                  + "maxRetries=\(config.maxRetries)")
+        }
+
+        log("lifecycle app_open")
         trackInternal("app_open")
     }
 
@@ -80,10 +95,12 @@ public final class HyStatistical {
 
     @objc private func appDidBecomeActive() {
         sessionId = String(UUID().uuidString.prefix(8)).lowercased()
+        log("lifecycle app_foreground")
         trackInternal("app_foreground")
     }
 
     @objc private func appWillResignActive() {
+        log("lifecycle app_will_resign_active (flushing)")
         queue?.flush()
     }
 
@@ -105,5 +122,15 @@ public final class HyStatistical {
         if let userId, !userId.isEmpty { event["user_id"] = userId }
         if let properties, !properties.isEmpty { event["properties"] = properties }
         queue?.add(event)
+        let pending = queue?.pendingCount ?? 0
+        if let properties, !properties.isEmpty {
+            log("track name=\(eventName) queue=\(pending) props=\(properties)")
+        } else {
+            log("track name=\(eventName) queue=\(pending)")
+        }
+    }
+
+    private func log(_ msg: String) {
+        if enableLog { print("[HyStatistical] \(msg)") }
     }
 }

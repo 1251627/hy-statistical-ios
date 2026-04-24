@@ -1,0 +1,33 @@
+{
+  "": {
+    "swift-dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/master.swiftdeps"
+  },
+  "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyEventQueue.swift": {
+    "dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue.d",
+    "object": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue.swift.o",
+    "swiftmodule": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue~partial.swiftmodule",
+    "swift-dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue.swiftdeps",
+    "diagnostics": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyEventQueue.dia"
+  },
+  "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyKeychainHelper.swift": {
+    "dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper.d",
+    "object": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper.swift.o",
+    "swiftmodule": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper~partial.swiftmodule",
+    "swift-dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper.swiftdeps",
+    "diagnostics": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyKeychainHelper.dia"
+  },
+  "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatistical.swift": {
+    "dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical.d",
+    "object": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical.swift.o",
+    "swiftmodule": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical~partial.swiftmodule",
+    "swift-dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical.swiftdeps",
+    "diagnostics": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatistical.dia"
+  },
+  "/Users/hy_mac/Desktop/statistical-all/sdk-ios/Sources/HyStatistical/HyStatisticalConfig.swift": {
+    "dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig.d",
+    "object": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig.swift.o",
+    "swiftmodule": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig~partial.swiftmodule",
+    "swift-dependencies": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig.swiftdeps",
+    "diagnostics": "/Users/hy_mac/Desktop/statistical-all/sdk-ios/.build/arm64-apple-macosx/debug/HyStatistical.build/HyStatisticalConfig.dia"
+  }
+}
