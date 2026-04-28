@@ -12,12 +12,12 @@ Xcode → File → Add Package Dependencies → 输入：
 https://github.com/1251627/hy-statistical-ios.git
 ```
 
-Version 选 `v0.1.4`。
+Version 选 `v0.2.0`。
 
 ### CocoaPods
 
 ```ruby
-pod 'HyStatistical', :git => 'https://github.com/1251627/hy-statistical-ios.git', :tag => 'v0.1.4'
+pod 'HyStatistical', :git => 'https://github.com/1251627/hy-statistical-ios.git', :tag => 'v0.2.0'
 ```
 
 ```bash
@@ -32,6 +32,7 @@ import HyStatistical
 HyStatistical.initialize(
     config: .init(
         apiKey: "your_api_key",
+        serverUrl: "https://your-collect-domain.com/api/v1",  // 必填
         enableLog: false    // 开发期可以开
     ),
     appVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "",
@@ -61,7 +62,7 @@ HyStatistical.track("button_click")
 ```swift
 HyStatisticalConfig(
     apiKey: "required",                                  // 必填
-    serverUrl: "http://192.168.9.85:3000/api/v1",       // 默认后端地址
+    serverUrl: "",                                       // 必填，例如 https://collect.your-domain.com/api/v1
     flushInterval: 10,                                   // 秒，定时 flush
     flushSize: 50,                                       // 积累多少条立刻 flush
     maxRetries: 3,                                       // 网络错误重试次数
@@ -105,4 +106,17 @@ HyStatisticalConfig(
 
 ## 版本
 
-查看 [Releases](https://github.com/1251627/hy-statistical-ios/releases)。最新稳定版：`v0.1.4`。
+查看 [Releases](https://github.com/1251627/hy-statistical-ios/releases)。最新稳定版：`v0.2.0`。
+
+### v0.2.0 升级须知（破坏性变更）
+
+`serverUrl` 从默认值改为**必填**。从 v0.1.x 升级时，原本的 `HyStatisticalConfig(apiKey: "xxx")` 编译失败。需要补上：
+
+```swift
+HyStatisticalConfig(
+    apiKey: "xxx",
+    serverUrl: "https://collect.your-domain.com/api/v1"  // 新增此行
+)
+```
+
+这一改动是为了避免「忘记改默认值，把生产事件错发到开发后端」的事故。

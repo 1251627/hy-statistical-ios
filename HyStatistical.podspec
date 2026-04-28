@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'HyStatistical'
-  s.version      = '0.1.4'
+  s.version      = '0.2.0'
   s.summary      = 'HyStatistical 数据埋点 iOS SDK'
   s.description  = '事件上报、批量发送、离线缓存、Keychain 持久化、自动采集生命周期'
   s.homepage     = 'https://github.com/1251627/hy-statistical-ios'

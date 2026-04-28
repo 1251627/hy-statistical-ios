@@ -8,9 +8,11 @@ public struct HyStatisticalConfig {
     public let maxRetries: Int
     public let enableLog: Bool
 
+    /// `serverUrl` 必填，例如 https://collect.your-domain.com/api/v1
+    /// 业务方在每次集成时显式声明，避免误把开发地址带到生产。
     public init(
         apiKey: String,
-        serverUrl: String = "http://192.168.9.85:3000/api/v1",
+        serverUrl: String,
         flushInterval: TimeInterval = 10,
         flushSize: Int = 50,
         maxRetries: Int = 3,
