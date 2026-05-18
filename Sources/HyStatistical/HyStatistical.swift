@@ -19,8 +19,10 @@ public final class HyStatistical {
     private var appVersion: String = ""
     private var isInitialized = false
     private var enableLog = false
+    private var lastFingerprintUploadAt: TimeInterval = 0
 
     private static let deviceIdKey = "com.hy.statistical.device_id"
+    private static let fingerprintThrottleSeconds: TimeInterval = 24 * 60 * 60
 
     private init() {}
 
@@ -33,6 +35,7 @@ public final class HyStatistical {
     }
 
     public static func setUserId(_ userId: String?) {
+        shared.uploadFingerprintIfNeeded()
         shared.userId = userId
         shared.log("setUserId \(userId ?? "(nil)")")
     }
@@ -81,6 +84,7 @@ public final class HyStatistical {
 
         setupLifecycleObservers()
         isInitialized = true
+        uploadFingerprintIfNeeded()
 
         if enableLog {
             let masked = config.apiKey.count > 8 ? "\(config.apiKey.prefix(8))***" : "***"
@@ -140,5 +144,24 @@ public final class HyStatistical {
 
     private func log(_ msg: String) {
         if enableLog { print("[HyStatistical] \(msg)") }
+    }
+
+    private func uploadFingerprintIfNeeded() {
+        guard let config = config, config.enableAdAttribution else { return }
+        let now = Date().timeIntervalSince1970
+        if now - lastFingerprintUploadAt < Self.fingerprintThrottleSeconds { return }
+
+        let fp = HyAdFingerprint.collect()
+        var payload: [String: Any] = ["os": fp.os, "paid": fp.paid]
+        if !fp.idfa.isEmpty { payload["idfa"] = fp.idfa }
+        if !fp.ua.isEmpty   { payload["ua"] = fp.ua }
+
+        queue?.setNextFlushExtras([
+            "visitor_id": deviceId,
+            "device_fingerprint": payload,
+        ])
+        queue?.flush()
+        lastFingerprintUploadAt = now
+        log("fingerprint uploaded idfa=\(fp.idfa.isEmpty ? "none" : "***") paid=\(fp.paid.prefix(8))...")
     }
 }

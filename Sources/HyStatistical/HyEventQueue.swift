@@ -11,6 +11,7 @@ final class HyEventQueue {
     private var timer: Timer?
     private var isFlushing = false
     private let lock = NSLock()
+    private var nextFlushExtrasQueue: [[String: Any]] = []
 
     private static let offlineKey = "hy_statistical_offline_events"
 
@@ -36,17 +37,26 @@ final class HyEventQueue {
         if shouldFlush { flush() }
     }
 
+    /// 让「下一次 flush」附带额外字段（例如 visitor_id / device_fingerprint）。
+    /// 每次 flush 仅会消费一条 extras；HTTP 请求构造的瞬间出队，不会在重试时重复消费。
+    func setNextFlushExtras(_ extras: [String: Any]) {
+        lock.lock()
+        nextFlushExtrasQueue.append(extras)
+        lock.unlock()
+    }
+
     func flush() {
         lock.lock()
         guard !isFlushing, !queue.isEmpty else { lock.unlock(); return }
         isFlushing = true
         let batchCount = min(flushSize, queue.count)
         let batch = Array(queue.prefix(batchCount))
+        let extras: [String: Any]? = nextFlushExtrasQueue.isEmpty ? nil : nextFlushExtrasQueue.removeFirst()
         lock.unlock()
 
-        log("flush → POST \(serverUrl)/collect batch=\(batch.count)")
+        log("flush → POST \(serverUrl)/collect batch=\(batch.count)\(extras != nil ? " (with extras)" : "")")
 
-        send(batch: batch, attempt: 0) { [weak self] outcome in
+        send(batch: batch, extras: extras, attempt: 0) { [weak self] outcome in
             guard let self else { return }
             self.lock.lock()
             switch outcome {
@@ -92,7 +102,7 @@ final class HyEventQueue {
         case retryable    // 5xx / 网络错误 / 编码错误，需要重试 + 离线保存
     }
 
-    private func send(batch: [[String: Any]], attempt: Int, completion: @escaping (FlushOutcome) -> Void) {
+    private func send(batch: [[String: Any]], extras: [String: Any]?, attempt: Int, completion: @escaping (FlushOutcome) -> Void) {
         guard let url = URL(string: "\(serverUrl)/collect") else {
             log("flush DROP invalid URL: \(serverUrl)/collect")
             completion(.clientError); return
@@ -101,7 +111,11 @@ final class HyEventQueue {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(apiKey, forHTTPHeaderField: "X-Api-Key")
-        do { request.httpBody = try JSONSerialization.data(withJSONObject: ["events": batch]) }
+        var payload: [String: Any] = ["events": batch]
+        if let extras = extras {
+            for (k, v) in extras { payload[k] = v }
+        }
+        do { request.httpBody = try JSONSerialization.data(withJSONObject: payload) }
         catch {
             log("flush DROP JSON encode error: \(error)")
             completion(.clientError); return
@@ -126,7 +140,7 @@ final class HyEventQueue {
             if attempt < self.maxRetries - 1 {
                 let delay = pow(2.0, Double(attempt))
                 DispatchQueue.global().asyncAfter(deadline: .now() + delay) {
-                    self.send(batch: batch, attempt: attempt + 1, completion: completion)
+                    self.send(batch: batch, extras: extras, attempt: attempt + 1, completion: completion)
                 }
             } else {
                 completion(.retryable)
