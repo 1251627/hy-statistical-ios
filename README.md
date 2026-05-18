@@ -67,7 +67,7 @@ HyStatisticalConfig(
     flushSize: 50,                                       // 积累多少条立刻 flush
     maxRetries: 3,                                       // 网络错误重试次数
     enableLog: false,                                    // 打开后打印 [HyStatistical] 前缀的调试日志
-    enableAdAttribution: false                           // v0.3.0+：开启后采集 IDFA / PAID 用于广告归因，启用前请更新 App 隐私政策
+    enableAdAttribution: false                           // v0.3.0+：开启后 SDK 在你的 App 内读取 IDFA / PAID 并随事件流上报到你的 serverUrl，启用前请在 App 隐私政策中声明
 )
 ```
 
@@ -119,12 +119,13 @@ HyStatistical.initialize(
 
 ### 工作机制
 
-- **冷启动后**与 **`setUserId(_:)`** 调用时，SDK 自动采集一次设备指纹并上报；同 visitorId 24 小时内最多上报一次
-- 采集字段：
+- 数据走向：SDK 在你的 App 进程内读取设备字段 → 随事件流 POST 到你自己配置的 `serverUrl/collect`。**SDK 作者不接触任何用户数据**，所有数据归你的服务端所有。
+- **冷启动后**与 **`setUserId(_:)`** 调用时，SDK 各触发一次设备指纹上报；同 visitorId 24 小时内最多上报一次
+- 读取字段：
   - **IDFA**：通过 `ASIdentifierManager`，**不弹 ATT 授权框**。用户未授权时系统返回全零 UUID，SDK 识别后上报空串（服务端识别为"未授权"）
   - **PAID**：基于 App 安装时间 + 系统更新时间 + 设备启动时间的不可逆 MD5 三元组，无授权要求
-- 上报内容随下一次 flush 一起 POST 到 `<serverUrl>/collect`，附带在 `device_fingerprint` 字段里
-- 关闭归因（默认状态）时，SDK 行为与 v0.2.x 完全一致，不采集任何广告标识符
+- 上报载体：随下一次 flush 一起 POST，附带在 `device_fingerprint` 字段里
+- 关闭归因（默认状态）时，SDK 行为与 v0.2.x 完全一致，**不读取任何广告标识符**
 
 ### App Store 审核
 
@@ -132,7 +133,7 @@ HyStatistical.initialize(
 
 ### 隐私政策
 
-启用归因前必须更新 App 隐私政策。模板见 [PRIVACY_NOTICE_TEMPLATE.md](PRIVACY_NOTICE_TEMPLATE.md)。
+启用归因前你的 App 隐私政策需明确声明读取 IDFA / PAID 以及上报到你自己后端做归因。模板见 [PRIVACY_NOTICE_TEMPLATE.md](PRIVACY_NOTICE_TEMPLATE.md)。
 
 ## 调试
 
@@ -146,7 +147,7 @@ HyStatistical.initialize(
 
 新增可选参数 `enableAdAttribution`（默认 `false`）。不开启的项目无需任何代码改动，从 v0.2.x 升级直接拉新版即可。
 
-开启后 SDK 采集 IDFA + PAID 并上报，详见上文「广告归因」章节。注意启用前需更新 App 隐私政策，模板见 [PRIVACY_NOTICE_TEMPLATE.md](PRIVACY_NOTICE_TEMPLATE.md)。
+开启后 SDK 在你的 App 内读取 IDFA + PAID 并上报到你自己的 `serverUrl`，详见上文「广告归因」章节。注意启用前需在 App 隐私政策中声明，模板见 [PRIVACY_NOTICE_TEMPLATE.md](PRIVACY_NOTICE_TEMPLATE.md)。
 
 ### v0.2.0 升级须知（破坏性变更）
 
