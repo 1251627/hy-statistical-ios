@@ -1,0 +1,22 @@
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+*.xcworkspace/contents.xcworkspacedata
+DerivedData/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# CocoaPods
+Pods/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
