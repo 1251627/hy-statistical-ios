@@ -2,12 +2,14 @@ import Foundation
 import AdSupport
 import CryptoKit
 import Darwin
+import UIKit
 
 /// Fingerprint payload mailed to the backend in the `device_fingerprint` field
 /// of the `/api/v1/collect` envelope.
 public struct HyAdFingerprintData {
     public let os: String          // "ios"
     public let idfa: String        // "" if all-zero (unauthorized) — backend treats as absent
+    public let idfv: String        // identifierForVendor raw UUID — required by 巨量引擎 real-time attribution
     public let paid: String        // 32-hex MD5 triple separated by "-"
     public let ua: String          // "" on iOS apps (no useful value)
 }
@@ -16,13 +18,22 @@ public enum HyAdFingerprint {
     /// Returns nil only if AdSupport is unavailable (extremely rare).
     public static func collect() -> HyAdFingerprintData {
         let idfa = readIdfa()
+        let idfv = readIdfv()
         let paid = computePaid()
         return HyAdFingerprintData(
             os: "ios",
             idfa: idfa.isAllZero ? "" : idfa,
+            idfv: idfv,
             paid: paid,
             ua: ""
         )
+    }
+
+    /// Reads IDFV (identifierForVendor). Stable across all apps from the same developer.
+    /// Doesn't require ATT authorization. Returns "" if unavailable.
+    /// Required by 巨量引擎 (OceanEngine) real-time attribution API.
+    private static func readIdfv() -> String {
+        return UIDevice.current.identifierForVendor?.uuidString.lowercased() ?? ""
     }
 
     /// Reads IDFA without prompting ATT. Returns "00000000-...-0000" when unauthorized.

@@ -61,4 +61,24 @@ final class HyAdFingerprintTests: XCTestCase {
         let b = HyAdFingerprint.collect().paid
         XCTAssertEqual(a, b, "PAID should be stable within a single boot")
     }
+
+    func testIdfvIsLowercaseUuidOrEmpty() {
+        // IDFV via UIDevice.identifierForVendor — may be nil in some test contexts → "".
+        // When non-empty, should be a lowercase UUID. iOS Simulator returns a stable UUID.
+        let fp = HyAdFingerprint.collect()
+        if !fp.idfv.isEmpty {
+            XCTAssertTrue(
+                fp.idfv.range(of: #"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"#,
+                              options: .regularExpression) != nil,
+                "got: \(fp.idfv)"
+            )
+        }
+    }
+
+    func testIdfvStableAcrossCalls() {
+        // IDFV must be stable within a single app process lifecycle.
+        let a = HyAdFingerprint.collect().idfv
+        let b = HyAdFingerprint.collect().idfv
+        XCTAssertEqual(a, b, "IDFV should be stable across calls within the same boot")
+    }
 }

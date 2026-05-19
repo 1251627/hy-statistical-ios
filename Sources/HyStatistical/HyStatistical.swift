@@ -154,6 +154,7 @@ public final class HyStatistical {
         let fp = HyAdFingerprint.collect()
         var payload: [String: Any] = ["os": fp.os, "paid": fp.paid]
         if !fp.idfa.isEmpty { payload["idfa"] = fp.idfa }
+        if !fp.idfv.isEmpty { payload["idfv"] = fp.idfv }   // 巨量引擎实时归因必需
         if !fp.ua.isEmpty   { payload["ua"] = fp.ua }
 
         queue?.setNextFlushExtras([
@@ -162,6 +163,6 @@ public final class HyStatistical {
         ])
         queue?.flush()
         lastFingerprintUploadAt = now
-        log("fingerprint uploaded idfa=\(fp.idfa.isEmpty ? "none" : "***") paid=\(fp.paid.prefix(8))...")
+        log("fingerprint uploaded idfa=\(fp.idfa.isEmpty ? "none" : "***") idfv=\(fp.idfv.isEmpty ? "none" : "***") paid=\(fp.paid.prefix(8))...")
     }
 }

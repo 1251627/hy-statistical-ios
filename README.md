@@ -101,9 +101,9 @@ HyStatisticalConfig(
 - HTTP 5xx / 网络错误 → 重试 `maxRetries` 次，最终失败写入 UserDefaults，下次启动自动恢复
 - `insert_id` 是每条事件的 UUID，服务端根据这个去重
 
-## 广告归因（v0.3.0+，可选）
+## 广告归因（v0.3.0+，可选；v0.4.0 增加 IDFV 用于巨量引擎）
 
-如果需要把 App 用户与外部广告点击（如小红书聚光 / 巨量 / 磁力）做归因匹配，开启 `enableAdAttribution`：
+如果需要把 App 用户与外部广告点击（如小红书聚光 / 巨量引擎 / 磁力）做归因匹配，开启 `enableAdAttribution`：
 
 ```swift
 HyStatistical.initialize(
@@ -123,6 +123,7 @@ HyStatistical.initialize(
 - **冷启动后**与 **`setUserId(_:)`** 调用时，SDK 各触发一次设备指纹上报；同 visitorId 24 小时内最多上报一次
 - 读取字段：
   - **IDFA**：通过 `ASIdentifierManager`，**不弹 ATT 授权框**。用户未授权时系统返回全零 UUID，SDK 识别后上报空串（服务端识别为"未授权"）
+  - **IDFV**（v0.4.0+）：通过 `UIDevice.current.identifierForVendor`，**无需用户授权**。同一开发者所有 App 间稳定，跨开发者不同。巨量引擎实时归因 API 必需。
   - **PAID**：基于 App 安装时间 + 系统更新时间 + 设备启动时间的不可逆 MD5 三元组，无授权要求
 - 上报载体：随下一次 flush 一起 POST，附带在 `device_fingerprint` 字段里
 - 关闭归因（默认状态）时，SDK 行为与 v0.2.x 完全一致，**不读取任何广告标识符**
@@ -141,7 +142,17 @@ HyStatistical.initialize(
 
 ## 版本
 
-查看 [Releases](https://github.com/1251627/hy-statistical-ios/releases)。最新稳定版：`v0.3.0`。
+查看 [Releases](https://github.com/1251627/hy-statistical-ios/releases)。最新稳定版：`v0.4.0`。
+
+### v0.4.0 升级须知（向后兼容）
+
+新增 **IDFV 采集**（仅在 `enableAdAttribution=true` 时上报）。
+
+IDFV (`identifierForVendor`) 是 iOS 系统标识符，**无需用户授权**，同一开发者所有 App 间稳定。**巨量引擎实时归因 API 必需**。
+
+- 不接巨量的项目可忽略本次变更，从 v0.3.x 升级**无需代码改动**
+- 接巨量的项目升级后，配合后端实时归因 service 即可生效
+- `Info.plist` 仍建议保留 `NSUserTrackingUsageDescription`（IDFA 仍可能采集）
 
 ### v0.3.0 升级须知（向后兼容）
 
